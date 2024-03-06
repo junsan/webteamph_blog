@@ -37,7 +37,6 @@
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-  <script src="https://cdn.tiny.cloud/1/ja4i4uul4k659zuafwubzvd5s1ceirsrf6vid09mrhpb0x4s/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -57,7 +56,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white bg-gradient-primary" href="{{ URL::route('admin.blog.index') }}">
+          <a class="nav-link text-white " href="{{ URL::route('admin.blog.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -65,7 +64,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{ URL::route('categories.index') }}">
+          <a class="nav-link text-white bg-gradient-primary" href="{{ URL::route('categories.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
@@ -93,43 +92,57 @@
     </nav>
     <!-- End Navbar -->
     <div class="row">
-        <div class="col-md-8 mt-4">
-        <div class="card">
+        <div class="col-md-12 mt-4">
+            <div>
+                <a href="{{ URL::route('categories.create') }}" class="btn btn-lg bg-gradient-primary btn-lg mb-4">Create Category</a>
+            </div>
+            <div class="card">
             <div class="card-header pb-0 px-3">
-              <h6 class="mb-0">Create Blog</h6>
+              <h6 class="mb-0">Category Information</h6>
             </div>
             <div class="card-body pt-4 p-3">
-                  <form role="form">
-                    <div class="input-group input-group-outline mb-3">
-                      <input type="text" placeholder="Title" class="form-control">
-                    </div>
-                    <div class="input-group input-group-outline mb-3">
-                      <input accept="image/*" type='file' id="imgInp" name="image" />
-                      <img id="blah" src="#" alt="your image" />
-                    </div>
-                    <div class="input-group input-group-outline mb-3">
-                      <select class="form-control">
-                        @foreach($categories as $category)
-                          <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                        @endforeach
-                      </select> 
-                    </div>
-                    <div class="input-group input-group-outline mb-3">
-                      <textarea id="mytextarea"></textarea>
-                    </div>
-                    <div class="input-group input-group-outline mb-3">
-                      <input type="text" placeholder="Author" class="form-control">
-                    </div>
-                    <div class="input-group input-group-outline mb-3">
-                      <input type="text" placeholder="Source" class="form-control">
-                    </div>        
-                    <div class="">
-                      <button type="button" class="btn btn-lg bg-gradient-primary btn-lg mt-4 mb-0">Publish</button>
-                    </div>
-                  </form>
+              <ul class="list-group">
+                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                  <div class="d-flex flex-column">
+                    <h6 class="mb-3 text-sm">Oliver Liam</h6>
+                    <span class="mb-2 text-xs">Company Name: <span class="text-dark font-weight-bold ms-sm-2">Viking Burrito</span></span>
+                    <span class="mb-2 text-xs">Email Address: <span class="text-dark ms-sm-2 font-weight-bold">oliver@burrito.com</span></span>
+                    <span class="text-xs">VAT Number: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+                  </div>
+                  <div class="ms-auto text-end">
+                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="material-icons text-sm me-2">delete</i>Delete</a>
+                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="material-icons text-sm me-2">edit</i>Edit</a>
+                  </div>
+                </li>
+                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                  <div class="d-flex flex-column">
+                    <h6 class="mb-3 text-sm">Lucas Harper</h6>
+                    <span class="mb-2 text-xs">Company Name: <span class="text-dark font-weight-bold ms-sm-2">Stone Tech Zone</span></span>
+                    <span class="mb-2 text-xs">Email Address: <span class="text-dark ms-sm-2 font-weight-bold">lucas@stone-tech.com</span></span>
+                    <span class="text-xs">VAT Number: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+                  </div>
+                  <div class="ms-auto text-end">
+                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="material-icons text-sm me-2">delete</i>Delete</a>
+                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="material-icons text-sm me-2">edit</i>Edit</a>
+                  </div>
+                </li>
+                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                  <div class="d-flex flex-column">
+                    <h6 class="mb-3 text-sm">Ethan James</h6>
+                    <span class="mb-2 text-xs">Company Name: <span class="text-dark font-weight-bold ms-sm-2">Fiber Notion</span></span>
+                    <span class="mb-2 text-xs">Email Address: <span class="text-dark ms-sm-2 font-weight-bold">ethan@fiber.com</span></span>
+                    <span class="text-xs">VAT Number: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+                  </div>
+                  <div class="ms-auto text-end">
+                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="material-icons text-sm me-2">delete</i>Delete</a>
+                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="material-icons text-sm me-2">edit</i>Edit</a>
+                  </div>
+                </li>
+              </ul>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
   </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
@@ -466,20 +479,6 @@
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
-  </script>
-  <script>
-    tinymce.init({
-      selector: '#mytextarea',
-      width: 1000
-    });
-    
-    imgInp.onchange = evt => {
-      const [file] = imgInp.files
-      if (file) {
-        blah.src = URL.createObjectURL(file)
-      }
-    }
-
   </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>

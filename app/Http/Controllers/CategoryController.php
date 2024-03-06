@@ -5,19 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 
-class BlogController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('blogs');
-    }
-
-    public function admin() 
-    {
-        return view('admin.blogs.index');
+        return view('admin.categories.index');
     }
 
     /**
@@ -25,9 +20,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        
-        return view('admin.blogs.create', ['categories' => $categories]);
+        return view('admin.categories.create');
     }
 
     /**
@@ -35,7 +28,11 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category;
+        $category->category_name = $request->name;
+        $category->save();
+
+        return redirect('admin/categories');
     }
 
     /**

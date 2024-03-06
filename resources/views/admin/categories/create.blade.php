@@ -57,7 +57,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white bg-gradient-primary" href="{{ URL::route('admin.blog.index') }}">
+          <a class="nav-link text-white" href="{{ URL::route('admin.blog.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -65,7 +65,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{ URL::route('categories.index') }}">
+          <a class="nav-link text-white  bg-gradient-primary" href="{{ URL::route('categories.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
@@ -96,35 +96,16 @@
         <div class="col-md-8 mt-4">
         <div class="card">
             <div class="card-header pb-0 px-3">
-              <h6 class="mb-0">Create Blog</h6>
+              <h6 class="mb-0">Create Category</h6>
             </div>
             <div class="card-body pt-4 p-3">
-                  <form role="form">
+                  <form action="{{ route('categories.store') }}" role="form" method="post">
+                    @csrf
                     <div class="input-group input-group-outline mb-3">
-                      <input type="text" placeholder="Title" class="form-control">
+                      <input type="text" name="name" placeholder="Name" class="form-control">
                     </div>
-                    <div class="input-group input-group-outline mb-3">
-                      <input accept="image/*" type='file' id="imgInp" name="image" />
-                      <img id="blah" src="#" alt="your image" />
-                    </div>
-                    <div class="input-group input-group-outline mb-3">
-                      <select class="form-control">
-                        @foreach($categories as $category)
-                          <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                        @endforeach
-                      </select> 
-                    </div>
-                    <div class="input-group input-group-outline mb-3">
-                      <textarea id="mytextarea"></textarea>
-                    </div>
-                    <div class="input-group input-group-outline mb-3">
-                      <input type="text" placeholder="Author" class="form-control">
-                    </div>
-                    <div class="input-group input-group-outline mb-3">
-                      <input type="text" placeholder="Source" class="form-control">
-                    </div>        
                     <div class="">
-                      <button type="button" class="btn btn-lg bg-gradient-primary btn-lg mt-4 mb-0">Publish</button>
+                      <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg mt-4 mb-0">Create</button>
                     </div>
                   </form>
             </div>
@@ -472,14 +453,6 @@
       selector: '#mytextarea',
       width: 1000
     });
-    
-    imgInp.onchange = evt => {
-      const [file] = imgInp.files
-      if (file) {
-        blah.src = URL.createObjectURL(file)
-      }
-    }
-
   </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
