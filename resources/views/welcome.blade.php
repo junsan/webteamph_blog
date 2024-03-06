@@ -5,10 +5,10 @@
     <meta name="keywords" content="​One-click solution for your static website., ​Hosting solution with benefits., What Clients Say, ​Purchase, ​Get started with the simpliest static page">
     <meta name="description" content="">
     <title>WebTeamPH</title>
-    <link rel="stylesheet" href="nicepage.css" media="screen">
-    <link rel="stylesheet" href="Home.css" media="screen">
-    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <link rel="stylesheet" href="{{asset('assets/css/nicepage.css')}}" media="screen">
+    <link rel="stylesheet" href="{{asset('assets/css/Home.css')}}" media="screen">
+    <script class="u-script" type="text/javascript" src="{{asset('assets/js/jquery.js')}}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{{asset('assets/js/nicepage.js')}}" defer=""></script>
     <meta name="generator" content="Nicepage 5.18.6, nicepage.com">
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
