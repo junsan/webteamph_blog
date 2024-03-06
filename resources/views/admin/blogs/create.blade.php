@@ -99,32 +99,42 @@
               <h6 class="mb-0">Create Blog</h6>
             </div>
             <div class="card-body pt-4 p-3">
-                  <form role="form">
+                  @if ($errors->any())
+                      <div class="alert alert-danger">
+                          <ul>
+                              @foreach ($errors->all() as $error)
+                                  <li>{{ $error }}</li>
+                              @endforeach
+                          </ul>
+                      </div>
+                  @endif
+                  <form action="{{ route('blog.store') }}" role="form" method="post" enctype="multipart/form-data">
+                    @csrf
                     <div class="input-group input-group-outline mb-3">
-                      <input type="text" placeholder="Title" class="form-control">
+                      <input name="title" type="text" placeholder="Title" class="form-control">
                     </div>
                     <div class="input-group input-group-outline mb-3">
                       <input accept="image/*" type='file' id="imgInp" name="image" />
                       <img id="blah" src="#" alt="your image" />
                     </div>
                     <div class="input-group input-group-outline mb-3">
-                      <select class="form-control">
+                      <select name="category_id" class="form-control">
                         @foreach($categories as $category)
                           <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                         @endforeach
                       </select> 
                     </div>
                     <div class="input-group input-group-outline mb-3">
-                      <textarea id="mytextarea"></textarea>
+                      <textarea name="body" id="mytextarea"></textarea>
                     </div>
                     <div class="input-group input-group-outline mb-3">
-                      <input type="text" placeholder="Author" class="form-control">
+                      <input name="author" type="text" placeholder="Author" class="form-control">
                     </div>
                     <div class="input-group input-group-outline mb-3">
-                      <input type="text" placeholder="Source" class="form-control">
+                      <input name="link" type="text" placeholder="Source" class="form-control">
                     </div>        
                     <div class="">
-                      <button type="button" class="btn btn-lg bg-gradient-primary btn-lg mt-4 mb-0">Publish</button>
+                      <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg mt-4 mb-0">Publish</button>
                     </div>
                   </form>
             </div>

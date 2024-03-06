@@ -26,6 +26,7 @@ Route::prefix('/admin')->group(function() {
     Route::get('/', [AdminController::class, 'index']);
     Route::get('/blogs', [BlogController::class, 'admin'])->name('admin.blog.index');
     Route::get('/blogs/create', [BlogController::class, 'create'])->name('blog.create');
+    Route::post('/blogs', [BlogController::class, 'store'])->name('blog.store');
 
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
