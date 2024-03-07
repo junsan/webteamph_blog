@@ -66,6 +66,9 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::where('id', $id)->first();
+        $category->delete();
+
+        return redirect('admin/categories');
     }
 }

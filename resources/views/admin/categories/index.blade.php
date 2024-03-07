@@ -110,7 +110,11 @@
                     <span class="mb-2 text-xs">Created At: <span class="text-dark font-weight-bold ms-sm-2">{{ $category->created_at }}</span></span>          
                   </div>
                   <div class="ms-auto text-end">
-                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="material-icons text-sm me-2">delete</i>Delete</a>
+                    <form action="{{ route('category.delete', $category->id) }}" method="post">
+                      @csrf
+                      @method("DELETE")
+                      <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0"><i class="material-icons text-sm me-2">delete</i>Delete</button>
+                    </form>
                     <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="material-icons text-sm me-2">edit</i>Edit</a>
                   </div>
                 </li>

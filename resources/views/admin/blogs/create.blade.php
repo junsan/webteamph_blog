@@ -115,7 +115,7 @@
                     </div>
                     <div class="input-group input-group-outline mb-3">
                       <input accept="image/*" type='file' id="imgInp" name="image" />
-                      <img id="blah" src="#" alt="your image" />
+                      <img id="blah" class="img-fluid" src="#" alt="your image" />
                     </div>
                     <div class="input-group input-group-outline mb-3">
                       <select name="category_id" class="form-control">
