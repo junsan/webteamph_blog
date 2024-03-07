@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Categories - WebTeamPH
+    Create Category - WebTeamPH
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -37,6 +37,7 @@
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  <script src="https://cdn.tiny.cloud/1/ja4i4uul4k659zuafwubzvd5s1ceirsrf6vid09mrhpb0x4s/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -56,7 +57,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{ URL::route('admin.blog.index') }}">
+          <a class="nav-link text-white" href="{{ URL::route('admin.blog.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -64,7 +65,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white bg-gradient-primary" href="{{ URL::route('categories.index') }}">
+          <a class="nav-link text-white  bg-gradient-primary" href="{{ URL::route('categories.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
@@ -92,38 +93,25 @@
     </nav>
     <!-- End Navbar -->
     <div class="row">
-        <div class="col-md-12 mt-4">
-            <div>
-                <a href="{{ URL::route('categories.create') }}" class="btn btn-lg bg-gradient-primary btn-lg mb-4">Create Category</a>
-            </div>
-            <div class="card">
+        <div class="col-md-8 mt-4">
+        <div class="card">
             <div class="card-header pb-0 px-3">
-              <h6 class="mb-0">Category Information</h6>
+              <h6 class="mb-0">Create Category</h6>
             </div>
             <div class="card-body pt-4 p-3">
-              <ul class="list-group">
-                @foreach ($categories as $category)              
-                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h4 class="mb-3 ">{{ $category->category_name }}</h4>
-                    <span class="mb-2 text-xs">Updated At: <span class="text-dark font-weight-bold ms-sm-2">{{ $category->updated_at }}</span></span>
-                    <span class="mb-2 text-xs">Created At: <span class="text-dark font-weight-bold ms-sm-2">{{ $category->created_at }}</span></span>          
-                  </div>
-                  <div class="ms-auto text-end">
-                    <form action="{{ route('category.delete', $category->id) }}" method="post">
-                      @csrf
-                      @method("DELETE")
-                      <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0"><i class="material-icons text-sm me-2">delete</i>Delete</button>
-                    </form>
-                    <a class="btn btn-link text-dark px-3 mb-0" href="{{ URL::route('categories.edit', $category->id) }}"><i class="material-icons text-sm me-2">edit</i>Edit</a>
-                  </div>
-                </li>
-                @endforeach
-              </ul>
+                  <form action="{{ route('categories.update', $category->id) }}" role="form" method="post">
+                    @csrf
+                    @method('put')
+                    <div class="input-group input-group-outline mb-3">
+                      <input type="text" value="{{ $category->category_name }}" name="category_name" placeholder="Name" class="form-control">
+                    </div>
+                    <div class="">
+                      <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg mt-4 mb-0">Update</button>
+                    </div>
+                  </form>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
   </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
@@ -460,6 +448,12 @@
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
+  </script>
+  <script>
+    tinymce.init({
+      selector: '#mytextarea',
+      width: 1000
+    });
   </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
