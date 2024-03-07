@@ -111,7 +111,7 @@
                     <span class="text-xs">Source: <span class="text-dark ms-sm-2 font-weight-bold">
                       <a target="_blank" href="{{$blog->link}}">{{$blog->link}}</a></span></span>
                     <div class="col-md-4 mt-5">
-                      <img src="{{ asset('images/'.$blog->image) }}" class="img-fluid" />
+                      <img src="{{ asset('public/images/'.$blog->image) }}" class="img-fluid" />
                     </div>
                   </div>
                   <div class="ms-auto text-end">

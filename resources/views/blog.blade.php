@@ -70,7 +70,7 @@
       <h2 class="blog-post-title mt- mb-3">{{$blog->title}}</h2>
       <p class="blog-post-meta">{{ $blog->created_at }} by <a href="#">{{ $blog->author }}</a></p>
       <div class="mt-5">
-        <img src="{{ asset('images/'.$blog->image) }}" class="img-fluid" />
+        <img src="{{ asset('public/images/'.$blog->image) }}" class="img-fluid" />
       </div>
       <div class="mt-5 mb-5">
         <p>{!! html_entity_decode($blog->body) !!}</p>

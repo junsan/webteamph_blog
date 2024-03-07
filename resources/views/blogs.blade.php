@@ -71,7 +71,7 @@
       <p class="lead mb-0"><a href="{{ URL::route('blog.show', $mainBlog->id) }}" class="text-white fw-bold">Continue reading...</a></p>
     </div>
     <div class="col-md-6">
-      <img src="images/{{ $mainBlog->image }}" class="img-fluid" />
+      <img src="public/images/{{ $mainBlog->image }}" class="img-fluid" />
     </div>
   </div>
 
@@ -86,7 +86,7 @@
           <a href="{{ URL::route('blog.show', $subBlog1->id) }}" class="stretched-link">Continue reading</a>
         </div>
         <div class="col-md-4 d-none d-lg-block">
-          <img src="images/{{ $subBlog1->image }}" class="img-fluid" />
+          <img src="public/images/{{ $subBlog1->image }}" class="img-fluid" />
         </div>
       </div>
     </div>
@@ -100,7 +100,7 @@
           <a href="{{ URL::route('blog.show', $subBlog2->id) }}" class="stretched-link">Continue reading</a>
         </div>
         <div class="col-md-4 d-none d-lg-block">
-          <img src="images/{{ $subBlog2->image }}" class="img-fluid" />
+          <img src="public/images/{{ $subBlog2->image }}" class="img-fluid" />
         </div>
       </div>
     </div>
