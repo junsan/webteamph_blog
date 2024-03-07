@@ -43,7 +43,7 @@
   <header class="blog-header py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
-        <a class="link-secondary" href="{{ URL::route('index') }}"><img src="images/weblogo.png" /></a>
+        <a class="link-secondary" href="{{ URL::route('index') }}"><img src="{{ asset('images/weblogo.png') }}" /></a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="link-secondary" href="#" aria-label="Search">
@@ -64,81 +64,20 @@
 </div>
 
 <main class="container">
-  <div class="row p-4 p-md-5 mb-4 text-white rounded bg-dark">
-    <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic">{{ $mainBlog->title }}</h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p class="lead mb-0"><a href="{{ URL::route('blog.show', $mainBlog->id) }}" class="text-white fw-bold">Continue reading...</a></p>
-    </div>
-    <div class="col-md-6">
-      <img src="images/{{ $mainBlog->image }}" class="img-fluid" />
-    </div>
-  </div>
 
   <div class="row mb-2">
-    <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-450 position-relative">
-        <div class="col-md-8 p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">World</strong>
-          <h3 class="mb-0">{{ $subBlog1->title }}</h3>
-          <div class="mb-1 text-muted">Nov 12</div>
-          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="{{ URL::route('blog.show', $subBlog1->id) }}" class="stretched-link">Continue reading</a>
-        </div>
-        <div class="col-md-4 d-none d-lg-block">
-          <img src="images/{{ $subBlog1->image }}" class="img-fluid" />
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-350 position-relative">
-        <div class="col-md-8 p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success">Design</strong>
-          <h3 class="mb-0">{{ $subBlog2->title }}</h3>
-          <div class="mb-1 text-muted">Nov 11</div>
-          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="{{ URL::route('blog.show', $subBlog2->id) }}" class="stretched-link">Continue reading</a>
-        </div>
-        <div class="col-md-4 d-none d-lg-block">
-          <img src="images/{{ $subBlog2->image }}" class="img-fluid" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row g-5">
     <div class="col-md-8">
-      <h3 class="pb-4 mb-4 fst-italic border-bottom">
-        More Blogs
-      </h3>
-      @foreach($moreBlogs as $blog)
-      <article class="blog-post">
-        <div class="row g-5">
-          <div class="col-md-7">
-            <a style="color: black; text-decoration: none;" href="{{ URL::route('blog.show', $blog->id) }}"><h2 class="blog-post-title">{{$blog->title}}</h2></a>
-            <p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
-
-            <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, lists, tables, images, code, and more are all supported as expected.</p>
-            <a href="{{ URL::route('blog.show', $blog->id) }}" class="stretched-link">Continue reading</a>  
-          </div>
-          <div class="col-md-5">
-            <img src="images/{{ $blog->image }}" class="img-fluid" />
-          </div>
-        </div>
-      </article>
-      @endforeach
-
-  
-
-
-
-      <nav class="blog-pagination" aria-label="Pagination">
-        <a class="btn btn-outline-primary" href="#">Older</a>
-        <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
-      </nav>
-
+      <h2 class="blog-post-title mt-5">{{$blog->title}}</h2>
+      <div class="mt-5">
+        <img src="{{ asset('images/'.$blog->image) }}" class="img-fluid" />
+      </div>
+      <div class="mt-5 mb-5">
+        <p>{!! html_entity_decode($blog->body) !!}</p>
+      </div>
+      <div class="mt-5 mb-5">
+        <span>Source:</span> <a target="_blank" href="{{$blog->link}}">{{$blog->link}}</a>
+      </div>
     </div>
-
     <div class="col-md-4">
       <div class="position-sticky" style="top: 2rem;">
         <div class="p-4">

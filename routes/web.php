@@ -18,12 +18,13 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 
 Route::get('blogs', [BlogController::class, 'index'])->name('blog.index');
+Route::get('blog/{id}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::prefix('/admin')->group(function() {
-    Route::get('/', [AdminController::class, 'index']);
+    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/blogs', [BlogController::class, 'admin'])->name('admin.blog.index');
     Route::get('/blogs/create', [BlogController::class, 'create'])->name('blog.create');
     Route::post('/blogs', [BlogController::class, 'store'])->name('blog.store');

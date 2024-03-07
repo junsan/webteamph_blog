@@ -18,12 +18,14 @@ class BlogController extends Controller
         $mainBlog = Blog::latest()->first();
         $subBlog1 = Blog::where('id', $mainBlog->id - 1)->first();
         $subBlog2 = Blog::where('id', $mainBlog->id - 2)->first();
+        $moreBlogs = Blog::where('id', "<=", $mainBlog->id - 3)->orderBy('id', 'DESC')->get();
 
         return view('blogs', [
             'categories' => $categories, 
             'mainBlog' => $mainBlog,
             'subBlog1' => $subBlog1,
-            'subBlog2' => $subBlog2
+            'subBlog2' => $subBlog2,
+            'moreBlogs' => $moreBlogs
         ]);
     }
 
@@ -68,7 +70,13 @@ class BlogController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $categories = Category::all();
+        $blog = Blog::where('id', $id)->first();
+        
+        return view('blog', [
+            'categories' => $categories,
+            'blog' => $blog
+        ]);
     }
 
     /**
