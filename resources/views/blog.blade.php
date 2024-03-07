@@ -78,6 +78,50 @@
       <div class="mt-5 mb-5">
         <span>Source:</span> <a target="_blank" href="{{$blog->link}}">{{$blog->link}}</a>
       </div>
+      <div class="mt-5 mb-5">
+        <button type="button" class="btn btn-secondary">Sign in to comment</button>
+      </div>
+      <div class="form-floating">
+        <span style="font-weight: bold; margin-bottom: 5px;">Add a comment</a>
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px;"></textarea>
+      </div>
+      <div class="mt-3 mb-5" style="float: right;">
+        <button type="button" class="btn btn-secondary">Comment</button>
+      </div>
+      <br style="clear: both;" />
+      <div class="mb-5">
+          <div class="row">
+            <div class="col-md-1">
+              <img  class="u-image-circle img-fluid" src="{{ asset('public/images/person.png') }}" />
+            </div>
+            <div class="col-md-11">
+              <span style="font-weight: bold;">Rabia Aslam</span> <span style="font-weight: lighter; font-size: small;">1 month ago</span>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora fugiat explicabo eos laboriosam quos magnam veniam.</p>
+            </div>
+          </div>
+      </div>
+      <div class="mb-5">
+          <div class="row">
+            <div class="col-md-1">
+              <img  class="u-image-circle img-fluid" src="{{ asset('public/images/person.png') }}" />
+            </div>
+            <div class="col-md-11">
+              <span style="font-weight: bold;">Rabia Aslam</span> <span style="font-weight: lighter; font-size: small;">1 month ago</span>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora fugiat explicabo eos laboriosam quos magnam veniam.</p>
+            </div>
+          </div>
+      </div>
+      <div class="mb-5">
+          <div class="row">
+            <div class="col-md-1">
+              <img  class="u-image-circle img-fluid" src="{{ asset('public/images/person.png') }}" />
+            </div>
+            <div class="col-md-11">
+              <span style="font-weight: bold;">Rabia Aslam</span> <span style="font-weight: lighter; font-size: small;">1 month ago</span>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora fugiat explicabo eos laboriosam quos magnam veniam.</p>
+            </div>
+          </div>
+      </div>
     </div>
     <div class="col-md-4">
       <div class="position-sticky" style="top: 2rem;">
