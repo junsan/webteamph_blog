@@ -111,18 +111,18 @@
       <h3 class="pb-4 mb-4 fst-italic border-bottom">
         More Blogs
       </h3>
-      @foreach($moreBlogs as $blog)
+      @foreach($moreBlogs as $moreblog)
       <article class="blog-post">
         <div class="row g-5">
           <div class="col-md-7">
-            <a style="color: black; text-decoration: none;" href="{{ URL::route('blog.show', $blog->id) }}"><h2 class="blog-post-title">{{$blog->title}}</h2></a>
+            <a style="color: black; text-decoration: none;" href="{{ URL::route('blog.show', $moreblog->id) }}"><h2 class="blog-post-title">{{$moreblog->title}}</h2></a>
             <p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
 
             <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, lists, tables, images, code, and more are all supported as expected.</p>
-            <a href="{{ URL::route('blog.show', $blog->id) }}" class="stretched-link">Continue reading</a>  
+            <a href="{{ URL::route('blog.show', $moreblog->id) }}">Continue reading</a>  
           </div>
           <div class="col-md-5">
-            <img src="images/{{ $blog->image }}" class="img-fluid" />
+            <img src="images/{{ $moreblog->image }}" class="img-fluid" />
           </div>
         </div>
       </article>
