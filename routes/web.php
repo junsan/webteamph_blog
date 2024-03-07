@@ -27,6 +27,8 @@ Route::prefix('/admin')->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/blogs', [BlogController::class, 'admin'])->name('admin.blog.index');
     Route::get('/blogs/create', [BlogController::class, 'create'])->name('blog.create');
+    Route::get('/blogs/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
+    Route::put('/blogs/{id}', [BlogController::class, 'update'])->name('blog.update');
     Route::post('/blogs', [BlogController::class, 'store'])->name('blog.store');
 
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');

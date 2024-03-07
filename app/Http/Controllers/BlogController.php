@@ -31,7 +31,10 @@ class BlogController extends Controller
 
     public function admin() 
     {
-        return view('admin.blogs.index');
+        $blogs = Blog::all();
+        return view('admin.blogs.index', [
+            'blogs' => $blogs
+        ]);
     }
 
     /**
@@ -84,7 +87,13 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $blog = Blog::where('id', $id)->first();
+        $categories = Category::all();
+
+        return view('admin.blogs.edit', [
+            'categories' => $categories,
+            'blog' => $blog
+        ]);
     }
 
     /**
@@ -92,7 +101,24 @@ class BlogController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $file = $request->file('image');
+        
+        if ($file) {
+            $file->move(public_path('images'), $file->getClientOriginalName());
+        }
+
+        $blog = Blog::where('id', $id)->first();
+        $blog->title = $request->title;
+        $blog->title = $request->title;
+        $blog->body = $request->body;
+        $blog->author = $request->author;
+        $blog->link = $request->link;
+        $blog->category_id = $request->category_id;
+        $blog->image = $file ? $file->getClientOriginalName() : $blog->image; 
+        $blog->save();
+        
+        return redirect('admin/blogs');
     }
 
     /**

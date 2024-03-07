@@ -79,9 +79,9 @@
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-450 position-relative">
         <div class="col-md-8 p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <strong class="d-inline-block mb-2 text-primary">{{ $subBlog1->category->category_name }}</strong>
           <h3 class="mb-0">{{ $subBlog1->title }}</h3>
-          <div class="mb-1 text-muted">Nov 12</div>
+          <div class="mb-1 text-muted">{{ $subBlog1->created_at }}</div>
           <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
           <a href="{{ URL::route('blog.show', $subBlog1->id) }}" class="stretched-link">Continue reading</a>
         </div>
@@ -93,9 +93,9 @@
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-350 position-relative">
         <div class="col-md-8 p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success">Design</strong>
+          <strong class="d-inline-block mb-2 text-success">{{ $subBlog2->category->category_name }}</strong>
           <h3 class="mb-0">{{ $subBlog2->title }}</h3>
-          <div class="mb-1 text-muted">Nov 11</div>
+          <div class="mb-1 text-muted">{{ $subBlog2->created_at }}</div>
           <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
           <a href="{{ URL::route('blog.show', $subBlog2->id) }}" class="stretched-link">Continue reading</a>
         </div>
@@ -116,7 +116,7 @@
         <div class="row g-5">
           <div class="col-md-7">
             <a style="color: black; text-decoration: none;" href="{{ URL::route('blog.show', $moreblog->id) }}"><h2 class="blog-post-title">{{$moreblog->title}}</h2></a>
-            <p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
+            <p class="blog-post-meta">{{ $moreblog->created_at }} by <a href="#">{{ $moreblog->author }}</a></p>
 
             <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, lists, tables, images, code, and more are all supported as expected.</p>
             <a href="{{ URL::route('blog.show', $moreblog->id) }}">Continue reading</a>  

@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Blog - WebTeamPH
+    Edit Blog - WebTeamPH
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -37,6 +37,7 @@
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  <script src="https://cdn.tiny.cloud/1/ja4i4uul4k659zuafwubzvd5s1ceirsrf6vid09mrhpb0x4s/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -56,7 +57,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white bg-gradient-primary" href="../pages/tables.html">
+          <a class="nav-link text-white bg-gradient-primary" href="{{ URL::route('admin.blog.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -92,39 +93,54 @@
     </nav>
     <!-- End Navbar -->
     <div class="row">
-        <div class="col-md-12 mt-4">
-            <div>
-                <a href="{{ URL::route('blog.create') }}" class="btn btn-lg bg-gradient-primary btn-lg mb-4">Create Blog</a>
-            </div>
-            <div class="card">
+        <div class="col-md-8 mt-4">
+        <div class="card">
             <div class="card-header pb-0 px-3">
-              <h6 class="mb-0">Blogs Information</h6>
+              <h6 class="mb-0">Edit Blog</h6>
             </div>
             <div class="card-body pt-4 p-3">
-              <ul class="list-group">
-                @foreach($blogs as $blog)
-                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                  <div class="d-flex flex-column row">
-                    <h4 class="mb-3">{{$blog->title}}</h4>
-                    <span class="mb-2 text-xs">Author: <span class="text-dark font-weight-bold ms-sm-2">{{$blog->author}}</span></span>
-                    <span class="mb-2 text-xs">Created At: <span class="text-dark ms-sm-2 font-weight-bold">{{$blog->created_at}}</span></span>
-                    <span class="text-xs">Source: <span class="text-dark ms-sm-2 font-weight-bold">
-                      <a target="_blank" href="{{$blog->link}}">{{$blog->link}}</a></span></span>
-                    <div class="col-md-4 mt-5">
-                      <img src="{{ asset('images/'.$blog->image) }}" class="img-fluid" />
+                  @if ($errors->any())
+                      <div class="alert alert-danger">
+                          <ul>
+                              @foreach ($errors->all() as $error)
+                                  <li>{{ $error }}</li>
+                              @endforeach
+                          </ul>
+                      </div>
+                  @endif
+                  <form action="{{ route('blog.update', $blog->id) }}" role="form" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <div class="input-group input-group-outline mb-3">
+                      <input value="{{$blog->title}}" name="title" type="text" placeholder="Title" class="form-control">
                     </div>
-                  </div>
-                  <div class="ms-auto text-end">
-                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="material-icons text-sm me-2">delete</i>Delete</a>
-                    <a class="btn btn-link text-dark px-3 mb-0" href="{{ URL::route('blog.edit', $blog->id) }}"><i class="material-icons text-sm me-2">edit</i>Edit</a>
-                  </div>
-                </li>
-                @endforeach
-              </ul>
+                    <div class="input-group input-group-outline mb-3">
+                      <input accept="image/*" type='file' id="imgInp" name="image" />
+                      <img id="blah" class="img-fluid mt-3" src="{{ asset('images/'.$blog->image) }}" alt="your image" />
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <select name="category_id" class="form-control">
+                        @foreach($categories as $category)
+                          <option value="{{ $category->id }}" {{$category->id == $blog->category_id  ? 'selected' : ''}} >{{ $category->category_name }}</option>
+                        @endforeach
+                      </select> 
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <textarea name="body" id="mytextarea">{{$blog->body}}</textarea>
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <input value="{{$blog->author}}" name="author" type="text" placeholder="Author" class="form-control">
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <input value="{{$blog->link}}" name="link" type="text" placeholder="Source" class="form-control">
+                    </div>        
+                    <div class="">
+                      <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg mt-4 mb-0">Publish</button>
+                    </div>
+                  </form>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
   </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
@@ -461,6 +477,20 @@
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
+  </script>
+  <script>
+    tinymce.init({
+      selector: '#mytextarea',
+      width: 1000
+    });
+    
+    imgInp.onchange = evt => {
+      const [file] = imgInp.files
+      if (file) {
+        blah.src = URL.createObjectURL(file)
+      }
+    }
+
   </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>

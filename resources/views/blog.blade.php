@@ -67,7 +67,8 @@
 
   <div class="row mb-2">
     <div class="col-md-8">
-      <h2 class="blog-post-title mt-5">{{$blog->title}}</h2>
+      <h2 class="blog-post-title mt- mb-3">{{$blog->title}}</h2>
+      <p class="blog-post-meta">{{ $blog->created_at }} by <a href="#">{{ $blog->author }}</a></p>
       <div class="mt-5">
         <img src="{{ asset('images/'.$blog->image) }}" class="img-fluid" />
       </div>
