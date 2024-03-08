@@ -48,7 +48,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="../pages/dashboard.html">
+          <a class="nav-link text-white active bg-gradient-success" href="{{ URL::route('admin.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
@@ -77,6 +77,22 @@
               <i class="material-icons opacity-10">view_in_ar</i>
             </div>
             <span class="nav-link-text ms-1">Comments</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{{ URL::route('user.index') }}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">view_in_ar</i>
+            </div>
+            <span class="nav-link-text ms-1">Users</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">view_in_ar</i>
+            </div>
+            <span class="nav-link-text ms-1">Logout</span>
           </a>
         </li>
       </ul>

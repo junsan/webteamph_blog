@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,4 +46,7 @@ Route::prefix('/admin')->group(function() {
     Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
     Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
     Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
+
+    Route::get('/users', [UserController::class, 'index'])->name('user.index');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('user.delete');
 });

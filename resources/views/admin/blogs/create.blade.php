@@ -57,7 +57,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white bg-gradient-primary" href="{{ URL::route('admin.blog.index') }}">
+          <a class="nav-link text-white bg-gradient-success" href="{{ URL::route('admin.blog.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -134,7 +134,7 @@
                       <input name="link" type="text" placeholder="Source" class="form-control">
                     </div>        
                     <div class="">
-                      <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg mt-4 mb-0">Publish</button>
+                      <button type="submit" class="btn btn-lg bg-gradient-success btn-lg mt-4 mb-0">Publish</button>
                     </div>
                   </form>
             </div>

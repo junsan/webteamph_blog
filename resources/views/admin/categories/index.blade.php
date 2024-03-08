@@ -64,7 +64,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white bg-gradient-primary" href="{{ URL::route('categories.index') }}">
+          <a class="nav-link text-white bg-gradient-success" href="{{ URL::route('categories.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
@@ -94,7 +94,7 @@
     <div class="row">
         <div class="col-md-12 mt-4">
             <div>
-                <a href="{{ URL::route('categories.create') }}" class="btn btn-lg bg-gradient-primary btn-lg mb-4">Create Category</a>
+                <a href="{{ URL::route('categories.create') }}" class="btn btn-lg bg-gradient-success btn-lg mb-4">Create Category</a>
             </div>
             <div class="card">
             <div class="card-header pb-0 px-3">

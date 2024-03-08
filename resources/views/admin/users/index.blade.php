@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Blog - WebTeamPH
+    Categories - WebTeamPH
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -56,7 +56,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white bg-gradient-success" href="../pages/tables.html">
+          <a class="nav-link text-white " href="{{ URL::route('admin.blog.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -64,7 +64,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{ URL::route('categories.index') }}">
+          <a class="nav-link text-white" href="{{ URL::route('categories.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
@@ -77,6 +77,14 @@
               <i class="material-icons opacity-10">view_in_ar</i>
             </div>
             <span class="nav-link-text ms-1">Comments</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white bg-gradient-success" href="../pages/virtual-reality.html">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">view_in_ar</i>
+            </div>
+            <span class="nav-link-text ms-1">Users</span>
           </a>
         </li>
       </ul>
@@ -93,34 +101,25 @@
     <!-- End Navbar -->
     <div class="row">
         <div class="col-md-12 mt-4">
-            <div>
-                <a href="{{ URL::route('blog.create') }}" class="btn btn-lg bg-gradient-success btn-lg mb-4">Create Blog</a>
-            </div>
             <div class="card">
             <div class="card-header pb-0 px-3">
-              <h6 class="mb-0">Blogs Information</h6>
+              <h6 class="mb-0">Users Information</h6>
             </div>
             <div class="card-body pt-4 p-3">
               <ul class="list-group">
-                @foreach($blogs as $blog)
+                @foreach ($users as $user)              
                 <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                  <div class="d-flex flex-column row">
-                    <h4 class="mb-3">{{$blog->title}}</h4>
-                    <span class="mb-2 text-xs">Author: <span class="text-dark font-weight-bold ms-sm-2">{{$blog->author}}</span></span>
-                    <span class="mb-2 text-xs">Created At: <span class="text-dark ms-sm-2 font-weight-bold">{{$blog->created_at}}</span></span>
-                    <span class="text-xs">Source: <span class="text-dark ms-sm-2 font-weight-bold">
-                      <a target="_blank" href="{{$blog->link}}">{{$blog->link}}</a></span></span>
-                    <div class="col-md-4 mt-5">
-                      <img src="{{ asset('public/images/'.$blog->image) }}" class="img-fluid" />
-                    </div>
+                  <div class="d-flex flex-column">
+                    <h4 class="mb-3 ">{{ $user->name }}</h4>
+                    <span class="mb-2 text-xs">Email: <span class="text-dark font-weight-bold ms-sm-2">{{ $user->email }}</span></span>
+                    <span class="mb-2 text-xs">Created At: <span class="text-dark font-weight-bold ms-sm-2">{{ $user->created_at }}</span></span>          
                   </div>
                   <div class="ms-auto text-end">
-                    <form action="{{ route('blog.delete', $blog->id) }}" method="post">
+                    <form action="{{ route('user.delete', $user->id) }}" method="post">
                       @csrf
                       @method("DELETE")
                       <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0"><i class="material-icons text-sm me-2">delete</i>Delete</button>
                     </form>
-                    <a class="btn btn-link text-dark px-3 mb-0" href="{{ URL::route('blog.edit', $blog->id) }}"><i class="material-icons text-sm me-2">edit</i>Edit</a>
                   </div>
                 </li>
                 @endforeach
