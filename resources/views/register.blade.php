@@ -54,6 +54,15 @@
                 </div>
               </div>
               <div class="card-body">
+                @if ($errors->has('name'))
+                    <span class="text-danger">{{ $errors->first('name') }}</span><br>
+                @endif
+                @if ($errors->has('email'))
+                    <span class="text-danger">{{ $errors->first('email') }}</span><br>
+                @endif
+                @if ($errors->has('password'))
+                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                @endif
                 <form role="form" class="text-start" action="{{ route('register.store') }}" method="post">
                   @csrf
                   <div class="input-group input-group-outline my-3">
@@ -66,7 +75,7 @@
                     <input type="password" name="password" placeholder="Password" class="form-control">
                   </div>
                   <div class="input-group input-group-outline mb-3">
-                    <input type="password" name="confirm_password" placeholder="Confirm Password" class="form-control">
+                    <input type="password" name="password_confirmation" placeholder="Confirm Password" class="form-control">
                   </div>
                   <div class="text-center">
                     <button type="submit" class="btn bg-gradient-success w-100 my-4 mb-2">Submit</button>
