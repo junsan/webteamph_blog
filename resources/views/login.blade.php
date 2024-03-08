@@ -54,21 +54,31 @@
                 </div>
               </div>
               <div class="card-body">
-                <form role="form" class="text-start">
+                @if ($errors->has('email'))
+                    <span class="text-danger">{{ $errors->first('email') }}</span><br>
+                @endif
+                @if ($errors->has('password'))
+                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                @endif
+                @if(session()->has('success'))
+                    <div class="alert alert-danger" style="color: #fff">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif               
+                <form role="form" class="text-start" action="{{ route('login.store') }}" method="post">
+                  @csrf
                   <div class="input-group input-group-outline my-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-control">
+                    <input name="email" type="email" placeholder="Email" class="form-control">
                   </div>
                   <div class="input-group input-group-outline mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-control">
+                    <input name="password" id="password" type="password" placeholder="Password" class="form-control">
                   </div>
                   <div class="form-check form-switch d-flex align-items-center mb-3">
                     <input class="form-check-input" type="checkbox" id="rememberMe" checked>
                     <label class="form-check-label mb-0 ms-3" for="rememberMe">Remember me</label>
                   </div>
                   <div class="text-center">
-                    <button type="button" class="btn bg-gradient-success w-100 my-4 mb-2">Log in</button>
+                    <button type="submit" class="btn bg-gradient-success w-100 my-4 mb-2">Log in</button>
                   </div>
                   <p class="mt-4 text-sm text-center">
                     Don't have an account?
